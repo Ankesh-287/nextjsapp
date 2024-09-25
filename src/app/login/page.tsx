@@ -30,6 +30,22 @@ export default function LoginPage() {
         }
     }
 
+    const onForgotPassword = async() => {
+        try {
+            if(!user.email) {
+                toast.error("Please enter your email");
+                return;
+            }
+            const response = await axios.post("/api/users/forgotpassword", {eamil: user.email});
+            const { token } = response.data;
+            toast.success("Password reset link sent");
+            router.push(`/forgotpassword?token=$=${token}`);
+        } catch (error: any) {
+            console.log("Forgot Password Failed", error.reponse?.data?.error|| error.message);
+            toast.error(error.response?.data?.error || "An error occurd")
+        }
+    }
+
     useEffect(() => {
         if(user.email.length > 0 && user.password.length > 0){
             setButtonDisabled(false);
@@ -66,6 +82,13 @@ export default function LoginPage() {
             onClick={onLogin}
             className="p-2 border border-gray-300 rounded-lg mb-4 focus:outline-none focus:border-gray-600"
             >Login here</button>
+
+            <button
+            type="submit"
+            onClick={onForgotPassword}
+            className="p-2 border border-gray-300 rounded-lg mb-4 focus:outline-none focus:border-gray-600"
+            >Forgot Password</button>
+
             <Link href="/signup"> Don't have an account </Link>
         </div>
     )
