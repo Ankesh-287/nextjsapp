@@ -5,7 +5,6 @@ import  User from "@/models/userModel"
 connect()
 
 export async function POST(request: NextRequest){
-
      
 
     try {

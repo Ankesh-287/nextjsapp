@@ -13,9 +13,9 @@ export default function SignupPage() {
         password: "",
         username: "",
     })
-
     const [buttonDisabled, setButtonDisabled] = useState(false);
     const [loading, setLoading] = useState(false);
+
 
     const onSingup = async() => { 
         try {
@@ -38,10 +38,11 @@ export default function SignupPage() {
         } else {
             setButtonDisabled(true);
         }
-    }, [user]);
+
+    }, []);
     return (
         <div className="flex flex-col items-center justify-center min-h-screen py-2">
-            <h1 className="mb-7">{loading ? "Porcessing" : "Signup"}</h1>
+            <h1 className="mb-7">{loading ? "Processing" : "Signup"}</h1>
             <hr />
             <label htmlFor="username"> User name</label>
             <input
