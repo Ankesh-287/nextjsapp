@@ -75,7 +75,7 @@ export default function SignupPage() {
             type="submit"
             onClick={onSingup}
             className="p-2 border border-gray-300 rounded-lg mb-4 focus:outline-none focus:border-gray-600"
-            >{buttonDisabled ? "No signup" : "Signup" }</button>
+            >{buttonDisabled ? "Signup" : "Can't Signup" }</button>
             <Link href="/login"> Visit Login Page</Link>
         </div>
     )
